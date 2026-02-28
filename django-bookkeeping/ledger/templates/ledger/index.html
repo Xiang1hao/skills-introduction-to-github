@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django 记账小程序</title>
+    <link rel="stylesheet" href="{% static 'ledger/styles.css' %}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>📒 Django 记账小程序</h1>
+      <p class="hint">前端 + Django 后端，数据保存到 SQLite。</p>
+
+      <section class="card">
+        <h2>新增记录</h2>
+        <form id="record-form">
+          {% csrf_token %}
+          <div class="grid">
+            <label>类型
+              <select id="type" required>
+                <option value="expense">支出</option>
+                <option value="income">收入</option>
+              </select>
+            </label>
+            <label>金额（元）
+              <input id="amount" type="number" min="0.01" step="0.01" required />
+            </label>
+            <label>分类
+              <input id="category" type="text" placeholder="如：餐饮、交通、工资" required />
+            </label>
+            <label>日期
+              <input id="date" type="date" required />
+            </label>
+          </div>
+          <label>备注
+            <input id="note" type="text" placeholder="可选" />
+          </label>
+          <button type="submit">添加记录</button>
+        </form>
+      </section>
+
+      <section class="card stats">
+        <div><span>总收入</span><strong id="total-income">¥0.00</strong></div>
+        <div><span>总支出</span><strong id="total-expense">¥0.00</strong></div>
+        <div><span>结余</span><strong id="balance">¥0.00</strong></div>
+      </section>
+
+      <section class="card">
+        <div class="header-row">
+          <h2>记录列表</h2>
+          <button id="clear-all" class="danger" type="button">清空全部</button>
+        </div>
+        <ul id="record-list"></ul>
+      </section>
+    </main>
+
+    <script src="{% static 'ledger/app.js' %}"></script>
+  </body>
+</html>

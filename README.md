@@ -73,3 +73,20 @@ Get help: [Post in our discussion board](https://github.com/orgs/skills/discussi
 &copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
 
 </footer>
+
+## Django 记账小程序
+
+根据需求，新增了 **Django 后端版本** 的记账小程序，路径为 `django-bookkeeping/`。
+
+功能：
+- 新增收入/支出记录（金额、分类、日期、备注）
+- 自动统计总收入、总支出、结余
+- 删除单条记录、清空全部记录
+- 数据保存到 SQLite（由 Django 后端管理）
+
+运行方式：
+1. 进入目录：`cd django-bookkeeping`
+2. 安装 Django（若本地未安装）：`pip install django`
+3. 执行迁移：`python manage.py migrate`
+4. 启动服务：`python manage.py runserver`
+5. 浏览器访问：`http://127.0.0.1:8000/`
